@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samir Singh | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            500: '#0ea5e9', /* Sky Blue */
+                            600: '#0284c7',
+                            accent: '#00ff41', /* Hacker Green */
+                        },
+                        dark: {
+                            bg: '#020617',
+                            card: '#0f172a',
+                            border: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #020617; color: #f8fafc; }
+        
+        /* Scroll Progress Bar */
+        #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: #0ea5e9; z-index: 100; width: 0%; }
+
+        /* Glass Effect */
+        .glass {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Animations */
+        .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        
+        .blob { position: absolute; filter: blur(80px); opacity: 0.4; z-index: -1; animation: float 10s infinite alternate; }
+        @keyframes float { 0% { transform: translate(0, 0); } 100% { transform: translate(20px, 40px); } }
+
+        /* Project Card Hover */
+        .project-card:hover img { transform: scale(1.1); }
+        
+        /* Pulsing Dot for Live Projects */
+        .pulsing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff41;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 rgba(0, 255, 65, 0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 255, 65, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 65, 0); }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <div id="progress-bar"></div>
+
+    <nav class="fixed w-full z-50 glass border-b-0 top-0">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold font-mono tracking-tighter">
+                &lt;Samir<span class="text-brand-500">/</span>&gt;
+            </a>
+            
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#home" class="hover:text-brand-500 transition">Home</a>
+                <a href="#about" class="hover:text-brand-500 transition">About</a>
+                <a href="#skills" class="hover:text-brand-500 transition">Skills</a>
+                <a href="#projects" class="hover:text-brand-500 transition">Work</a>
+                <a href="#contact" class="hover:text-brand-500 transition">Contact</a>
+            </div>
+
+            <a href="#contact" class="hidden md:inline-flex items-center gap-2 px-5 py-2 bg-brand-500 hover:bg-brand-600 text-white rounded-lg font-bold transition shadow-lg shadow-brand-500/25">
+                <i class="fa-regular fa-paper-plane"></i> Hire Me
+            </a>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex items-center relative pt-20 overflow-hidden">
+        <div class="blob bg-blue-600 w-96 h-96 top-0 left-0"></div>
+        <div class="blob bg-purple-600 w-96 h-96 bottom-0 right-0 animation-delay-2000"></div>
+
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center z-10">
+            <div class="space-y-6 fade-up">
+                <div class="inline-block px-3 py-1 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-500 text-xs font-bold uppercase tracking-wider">
+                    Full Stack Developer & IT Pro
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+                    Hey, I'm <br> <span class="text-gradient">Singh Samir</span>
+                </h1>
+                <p class="text-xl text-slate-400 max-w-lg">
+                    I build high-performance applications and secure networks. Specializing in 
+                    <span class="text-white font-bold">Python, Java, and Web Technologies</span>.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#projects" class="px-8 py-4 bg-white text-dark-bg font-bold rounded-lg hover:bg-slate-200 transition">
+                        View Projects
+                    </a>
+                    <a href="#skills" class="px-8 py-4 glass text-white font-bold rounded-lg hover:bg-white/10 transition">
+                        My Skills
+                    </a>
+                </div>
+
+                <div class="flex gap-6 text-2xl text-slate-500 pt-6">
+                    <a href="https://github.com/Samir-Singh900" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/samir-singh-927637328/" target="_blank" class="hover:text-blue-500 transition"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://wa.me/919879442925" target="_blank" class="hover:text-green-500 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="relative fade-up hidden lg:block">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 blur-3xl opacity-20 rounded-full"></div>
+                <div class="relative bg-dark-card border border-dark-border rounded-2xl p-6 shadow-2xl rotate-2 hover:rotate-0 transition duration-500 group">
+                    <div class="flex items-center gap-2 mb-4 border-b border-dark-border pb-4">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="text-xs text-slate-500 ml-auto font-mono">portfolio.py</span>
+                    </div>
+                    <pre class="font-mono text-sm leading-relaxed">
+<span class="text-purple-400">class</span> <span class="text-yellow-400">Developer</span>:
+    <span class="text-blue-400">name</span> = <span class="text-green-400">"Singh Samir"</span>
+    <span class="text-blue-400">role</span> = <span class="text-green-400">"Software Engineer"</span>
+    <span class="text-blue-400">location</span> = <span class="text-green-400">"Surat, India"</span>
+
+    <span class="text-purple-400">def</span> <span class="text-blue-400">skills</span>(self):
+        <span class="text-purple-400">return</span> [
+            <span class="text-green-400">"Python"</span>, <span class="text-green-400">"Java"</span>, 
+            <span class="text-green-400">"React"</span>, <span class="text-green-400">"SQL"</span>
+        ]
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-dark-card/50">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div class="fade-up">
+                    <h2 class="text-3xl font-bold mb-6">About <span class="text-brand-500">Me</span></h2>
+                    <p class="text-slate-400 leading-loose mb-6">
+                        I am an aspiring IT professional currently pursuing my Diploma in IT from <strong class="text-white">P.P. Savani University</strong>. 
+                        I have a strong foundation in software development and networking. I love solving complex problems and building efficient systems.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="p-4 bg-dark-bg border border-dark-border rounded-lg">
+                            <h3 class="text-2xl font-bold text-white">10+</h3>
+                            <p class="text-xs text-slate-500 uppercase">Projects</p>
+                        </div>
+                        <div class="p-4 bg-dark-bg border border-dark-border rounded-lg">
+                            <h3 class="text-2xl font-bold text-white">3+</h3>
+                            <p class="text-xs text-slate-500 uppercase">Languages</p>
+                        </div>
+                    </div>
+                    
+                    <a href="Samir Singh Resume .pdf" download="Samir Singh Resume .pdf" class="inline-flex items-center gap-2 text-brand-500 font-bold hover:text-white transition group border border-brand-500 px-6 py-3 rounded-lg hover:bg-brand-500">
+                        Download Resume <i class="fa-solid fa-arrow-down group-hover:translate-y-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <div class="fade-up relative">
+                    <div class="absolute inset-0 bg-brand-500/10 blur-3xl rounded-full"></div>
+                    <div class="relative bg-dark-bg border border-dark-border p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-4">Quick Bio</h3>
+                        <ul class="space-y-4 text-slate-400 text-sm">
+                            <li class="flex justify-between border-b border-dark-border pb-2">
+                                <span>Education:</span> <span class="text-white">Diploma in IT</span>
+                            </li>
+                            <li class="flex justify-between border-b border-dark-border pb-2">
+                                <span>University:</span> <span class="text-white">P.P. Savani University</span>
+                            </li>
+                            <li class="flex justify-between border-b border-dark-border pb-2">
+                                <span>Focus:</span> <span class="text-white">Software & Networks</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Location:</span> <span class="text-white">Surat, India</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center fade-up">Technical <span class="text-brand-500">Expertise</span></h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-8 rounded-2xl fade-up border-t-4 border-yellow-400">
+                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-code text-yellow-400"></i> Languages
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-slate-300">Python</span>
+                        <span class="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-slate-300">Java</span>
+                        <span class="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-slate-300">C Programming</span>
+                        <span class="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-slate-300">PHP</span>
+                    </div>
+                </div>
+
+                <div class="glass p-8 rounded-2xl fade-up border-t-4 border-brand-500">
+                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-globe text-brand-500"></i> Web & Data
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-slate-300">HTML5 / CSS3</span>
+                        <span class="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-slate-300">JavaScript</span>
+                        <span class="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-slate-300">MySQL</span>
+                        <span class="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-slate-300">MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="glass p-8 rounded-2xl fade-up border-t-4 border-purple-500">
+                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-layer-group text-purple-500"></i> Core Concepts
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-slate-300">Data Structures</span>
+                        <span class="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-slate-300">Computer Networks</span>
+                        <span class="px-3 py-1 bg-dark-bg border border-dark-border rounded text-sm text-slate-300">Servlet Programming</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 bg-dark-card/30">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-up">
+                <h2 class="text-4xl font-bold mb-4">Featured <span class="text-brand-500">Projects</span></h2>
+            </div>
+
+            <div class="flex flex-col items-center gap-12">
+                
+                <div class="project-card group relative rounded-xl overflow-hidden border border-dark-border bg-dark-card fade-up w-full max-w-4xl shadow-2xl hover:-translate-y-2 transition duration-300 grid md:grid-cols-2">
+                    <div class="h-64 md:h-auto bg-gradient-to-br from-emerald-900 to-black flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/circuit.png')]"></div>
+                        <i class="fa-solid fa-microchip text-8xl text-brand-accent group-hover:scale-110 transition duration-500 z-10 opacity-80"></i>
+                    </div>
+                    <div class="p-8 flex flex-col justify-center">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-brand-accent uppercase tracking-widest">AI & Voice</span>
+                            <span class="flex items-center gap-2 bg-green-900/30 text-green-400 border border-green-500/30 text-xs px-2 py-1 rounded font-bold">
+                                <div class="pulsing-dot"></div> LIVE
+                            </span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mt-2 mb-3">ECHO | Neural Interface</h3>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                            A voice-activated AI dashboard hosted on the cloud. Integrates the <strong>Llama 3.1 LLM</strong> via Groq API. Features real-time voice synthesis (Text-to-Speech), simulated system telemetry, and a futuristic glassmorphism UI.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs text-slate-500 font-mono mb-6">
+                            <span class="px-2 py-1 border border-slate-700 rounded">#PythonFlask</span> 
+                            <span class="px-2 py-1 border border-slate-700 rounded">#GroqAPI</span> 
+                            <span class="px-2 py-1 border border-slate-700 rounded">#PythonAnywhere</span>
+                        </div>
+                        <a href="https://7212Samir.pythonanywhere.com" target="_blank" class="block w-full py-3 border border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-black text-center rounded-lg font-bold transition shadow-lg shadow-brand-accent/10 text-lg">
+                            Launch System <i class="fa-solid fa-power-off ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card group relative rounded-xl overflow-hidden border border-dark-border bg-dark-card fade-up w-full max-w-4xl shadow-2xl hover:-translate-y-2 transition duration-300 grid md:grid-cols-2">
+                    <div class="h-64 md:h-auto bg-gradient-to-br from-blue-900 to-slate-900 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                        <i class="fa-solid fa-chart-line text-8xl text-brand-500 group-hover:scale-110 transition duration-500 z-10"></i>
+                    </div>
+                    <div class="p-8 flex flex-col justify-center">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-brand-500 uppercase tracking-widest">FinTech</span>
+                            <span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs px-2 py-1 rounded font-bold">DEPLOYED</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mt-2 mb-3">ProTrade AI Advisor</h3>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                            Intelligent market advisor analyzing NIFTY 50 stocks using RSI & MACD algorithms. Generates accurate Buy/Sell tips with a built-in search engine and direct execution links to NSE.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs text-slate-500 font-mono mb-6">
+                            <span class="px-2 py-1 border border-slate-700 rounded">#JavaScript</span> 
+                            <span class="px-2 py-1 border border-slate-700 rounded">#LocalDB</span> 
+                            <span class="px-2 py-1 border border-slate-700 rounded">#NSE-API</span>
+                        </div>
+                        <a href="https://Samir-Singh900.github.io/protrade-ai/" target="_blank" class="block w-full py-3 bg-brand-600 hover:bg-brand-500 text-white text-center rounded-lg font-bold transition shadow-lg shadow-brand-500/25 text-lg">
+                            View Project <i class="fa-solid fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-3xl font-bold mb-12 text-center fade-up">Education & <span class="text-brand-500">Experience</span></h2>
+            <div class="space-y-8 border-l-2 border-slate-800 ml-4">
+                <div class="relative pl-8 fade-up">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-500 border-4 border-dark-bg"></div>
+                    <h3 class="text-xl font-bold text-white">Diploma in IT</h3>
+                    <p class="text-brand-500 text-sm mb-2">P.P. Savani University | 2023 - 2026</p>
+                    <p class="text-slate-400 text-sm">Gaining comprehensive knowledge in coding, algorithms, and system architecture.</p>
+                </div>
+                <div class="relative pl-8 fade-up">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-purple-500 border-4 border-dark-bg"></div>
+                    <h3 class="text-xl font-bold text-white">Mastering Cyber Battlefield</h3>
+                    <p class="text-purple-400 text-sm mb-2">iFlutter Institute | Oct 2023</p>
+                    <p class="text-slate-400 text-sm">Workshop on cybersecurity threats, defense strategies, and ethical hacking basics.</p>
+                </div>
+                <div class="relative pl-8 fade-up">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-yellow-500 border-4 border-dark-bg"></div>
+                    <h3 class="text-xl font-bold text-white">Course on Computer Concepts</h3>
+                    <p class="text-yellow-400 text-sm mb-2">Velocis Institute | Apr 2023</p>
+                    <p class="text-slate-400 text-sm">Certified proficiency in fundamental computer operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-dark-card/30">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="glass p-8 md:p-12 rounded-3xl text-center fade-up relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl -z-10"></div>
+                
+                <h2 class="text-4xl font-bold mb-6">Let's Work Together</h2>
+                <p class="text-slate-400 mb-8 max-w-xl mx-auto">
+                    I am currently available for freelance projects and internships. 
+                    If you have an idea or need a developer, drop me a message!
+                </p>
+
+                <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
+                    <a href="mailto:samirsingh98794@gmail.com" class="flex items-center justify-center gap-3 px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-bold transition shadow-lg shadow-brand-500/25">
+                        <i class="fa-regular fa-envelope"></i> Send Email
+                    </a>
+                    <a href="tel:+919879442925" class="flex items-center justify-center gap-3 px-8 py-4 border border-slate-600 hover:border-white text-white rounded-xl font-bold transition">
+                        <i class="fa-solid fa-phone"></i> +91 98794 42925
+                    </a>
+                </div>
+
+                <div class="border-t border-slate-700 pt-8 flex justify-center space-x-8 text-xl text-slate-500">
+                    <a href="https://github.com/Samir-Singh900" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/samir-singh-927637328/" target="_blank" class="hover:text-blue-500 transition"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://wa.me/919879442925" target="_blank" class="hover:text-green-500 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <p class="text-center text-slate-600 text-xs mt-12">
+                &copy; 2025 Singh Samir. Designed & Developed with <i class="fa-solid fa-heart text-red-500"></i>
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // 1. SCROLL PROGRESS BAR
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+            reveal();
+        };
+
+        // 2. FADE UP ANIMATION
+        function reveal() {
+            var reveals = document.querySelectorAll(".fade-up");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("visible");
+                }
+            }
+        }
+        reveal(); // Trigger on load
+    </script>
+</body>
+</html>
